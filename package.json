@@ -1,0 +1,18 @@
+{
+  "name": "greenshield-core",
+  "version": "0.0.1",
+  "description": "The core of the greenshield framework",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "keywords": [
+    "mobile",
+    "gaming"
+  ],
+  "author": "Alexandre Vieira",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
