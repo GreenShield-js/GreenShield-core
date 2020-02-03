@@ -1,1 +1,1 @@
-# GreenShield-core6
+# GreenShield-core
