@@ -1,5 +1,5 @@
 [![N|Solid](https://avatars3.githubusercontent.com/u/60478234?s=64&v=4)](https://nodesource.com/products/nsolid)
-# GreenShield Core
+# GreenShield Core 0.0.3
 GreenShield Core is a API framework to build fast and reliables APIs with Node.js, with a simple syntax.
 
 ### pros:
