@@ -64,6 +64,23 @@ Core.start();
 ```
 In this example we create 2 routes, "/api/core" and "/api/main".
 
+### Changing server configuration
+```javascript 
+const Core = require("./main").Core;
+Core.init();
+Core.setEndpointConfig({ host: "0.0.0.0", port: 4000 });
+//OR
+Core.setEndpointConfig({ port: 4000 });
+// You can change any of those values in this method
+Core.setEndpointConfig({  
+  host: "127.0.0.1",
+  port: 3000,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  rootRoute: "/"
+});
+
+```
+
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
