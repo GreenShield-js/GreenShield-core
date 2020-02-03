@@ -18,11 +18,10 @@ exports.Core = {
       }
     });
   },
-  api(rootRoute,content){
-    
-    for(let i=0;i<content.length;i++){
+  api(rootRoute, content) {
+    for (let i = 0; i < content.length; i++) {
       sysRoutes.push({
-        url: rootRoute+"/"+content[i].url,
+        url: rootRoute + "/" + content[i].url,
         get: content[i].get
       });
     }
@@ -34,15 +33,16 @@ exports.Core = {
     });
   },
   mapRoutes(reqUrl, req, res) {
-    let mainFunction = ()=>{
-      res.writeHead(404, {'Content-Type': 'text/plain'});
-      res.end('Not found...\n')
-    }
-    for (let i = 0; i < sysRoutes.length; i++) {
-      if (sysRoutes[i].url === reqUrl) {
-        mainFunction = sysRoutes[i].get;
+    let mainFunction = () => {
+      res.writeHead(404, { "Content-Type": "text/plain" });
+      res.end("Not found...\n");
+    };
+    sysRoutes.map(route => {
+      if (route.url === reqUrl) {
+        mainFunction = route.get;
       }
-    }
+    });
+
     return mainFunction;
   },
   isCompactible() {
