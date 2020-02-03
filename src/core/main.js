@@ -20,26 +20,52 @@ exports.Core = {
   },
   api(rootRoute, content) {
     for (let i = 0; i < content.length; i++) {
-      sysRoutes.push({
-        url: rootRoute + "/" + content[i].url,
-        get: content[i].get
-      });
+      let keys = Object.keys(content[i]);
+      for (let key = 0; key < keys.length; key++) {
+        if (keys[key] === "get") {
+          this.get(rootRoute + "/" + content[i].url, content[i].get);
+        }
+        if (keys[key] === "post") {
+          this.post(rootRoute + "/" + content[i].url, content[i].post);
+        }
+      }
     }
+    console.log(sysRoutes);
   },
   get(url, action) {
     sysRoutes.push({
       url: url,
-      get: action
+      method: "GET",
+      content: action
     });
   },
+  post(url, action) {
+    sysRoutes.push({
+      url: url,
+      method: "POST",
+      content: action
+    });
+  },
+
   mapRoutes(reqUrl, req, res) {
-    let mainFunction = () => {
-      res.writeHead(404, { "Content-Type": "text/plain" });
-      res.end("Not found...\n");
+    methodNotAllowed = (req, res) => {
+      res.writeHead(405, { "Content-Type": "text/plain" });
+      res.end("Method not allowed\n");
     };
+    routeNotFound = (req, res) => {
+      res.writeHead(404, { "Content-Type": "text/plain" });
+      res.end("Content not found\n");
+    };
+    mainFunction = routeNotFound;
+    let acepted = false;
     sysRoutes.map(route => {
       if (route.url === reqUrl) {
-        mainFunction = route.get;
+        if (req.method === route.method) {
+          acepted = true;
+          mainFunction = route.content;
+        } else if (acepted === false) {
+          mainFunction = methodNotAllowed;
+        }
       }
     });
 
@@ -56,7 +82,7 @@ exports.Core = {
     this.http
       .createServer(function(request, response) {
         action = mapRoutes(request.url, request, response);
-        response.writeHead(200, { "Content-Type": "text/plain" });
+
         action(request, response);
       })
       .listen(this.protocolValues.port);
