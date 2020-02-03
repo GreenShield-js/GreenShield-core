@@ -1,4 +1,4 @@
-[![N|Solid](https://avatars3.githubusercontent.com/u/60478234?s=64&v=4)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://avatars3.githubusercontent.com/u/60478234?s=64&v=4)](https://github.com/GreenShield-js)
 # GreenShield Core 0.0.3
 GreenShield Core is a API framework to build fast and reliables APIs with Node.js, with a simple syntax.
 
@@ -97,3 +97,4 @@ Please note we have a code of conduct, please follow it in all your interactions
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you 
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
+@ GreenShield Foundation
