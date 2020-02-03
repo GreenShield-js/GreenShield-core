@@ -66,7 +66,7 @@ In this example we create 2 routes, "/api/core" and "/api/main".
 
 ### Changing server configuration
 ```javascript 
-const Core = require("./main").Core;
+const Core = require("GScore").Core;
 Core.init();
 Core.setEndpointConfig({ host: "0.0.0.0", port: 4000 });
 //OR
