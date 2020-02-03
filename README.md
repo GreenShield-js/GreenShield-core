@@ -41,7 +41,7 @@ Core.start();
 ### Api structuring routes
 If you want to build a API, with the GreenShield framework you can code it like a list with a root endpoint. 
 ```javascript 
-const Core = require("./main").Core;
+const Core = require("GScore").Core;
 Core.init();
 Core.api("/api", [
   {
