@@ -1,7 +1,7 @@
-let Core = require("./main").Core;
+const Core = require("./main").Core;
 
 Core.init();
-
+Core.setEndpointConfig({ host: "0.0.0.0", port: 4000 });
 Core.get("/simpleGet", function(req, res) {
   res.end("Get\n");
 });
